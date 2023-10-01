@@ -45,6 +45,11 @@ func Scanner(targetURL string, showSuccessful bool, wordlistFile *os.File, secur
 		os.Exit(1)
 	}
 
+	if wordlistFile == nil {
+		PrintLog("error", "The provided wordlist file is nil!")
+		return
+	}
+
 	scanner := bufio.NewScanner(wordlistFile)
 	for scanner.Scan() {
 		line := scanner.Text()
