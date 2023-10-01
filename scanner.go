@@ -25,7 +25,7 @@ func makeRequest(preparedURL string, word string, showSuccessful bool) {
 	if err != nil {
 		PrintLog("respose error", "There was an error encounted while making GET request to this URL: "+preparedURL+"\nERROR: "+err.Error())
 	} else {
-		if resp.StatusCode == 400 && showSuccessful {
+		if resp.StatusCode != 200 && showSuccessful {
 			return
 		}
 		PrintLog(strconv.Itoa(resp.StatusCode), "[Method: GET] "+preparedURL)
